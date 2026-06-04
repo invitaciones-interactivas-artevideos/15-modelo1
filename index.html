@@ -5,13 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Invitación Premium</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-   🎨 ESTILO GLOBAL
-   ========================= */
 :root{
   --primary:#d4af37;
   --bg:#000;
@@ -29,14 +25,11 @@ body{
   overflow-x:hidden;
 }
 
-/* =========================
-   🎬 BACKGROUND
-   ========================= */
+/* ================= BACKGROUND ================= */
 .background{
   position:fixed;
   inset:0;
   z-index:-1;
-  overflow:hidden;
 }
 
 .background video,
@@ -53,9 +46,7 @@ body{
   background:rgba(0,0,0,0.4);
 }
 
-/* =========================
-   HERO
-   ========================= */
+/* ================= HERO ================= */
 .hero{
   height:100vh;
   display:flex;
@@ -65,36 +56,37 @@ body{
 }
 
 .hero-content{
-  animation:fadeUp 1.8s ease;
+  animation:fadeUp 1.5s ease;
 }
 
-/* 💎 NOMBRE LUJO PREMIUM */
+/* NOMBRE LUJO */
 .luxury-name{
   font-family:var(--title-font);
   font-size:3.6rem;
-  letter-spacing:2px;
-
   background:linear-gradient(90deg,#d4af37,#fff3b0,#d4af37);
-  background-size:200% auto;
-
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
-  animation:shine 3s linear infinite, fadeName 2s ease forwards;
-
+  animation:shine 3s infinite linear, fadeName 1.5s ease forwards;
   opacity:0;
-  transform:translateY(20px);
+}
+
+/* SUBTÍTULOS */
+.main-title{
+  font-family:var(--title-font);
+  font-size:1.4rem;
+  margin-top:10px;
 }
 
 .subtitle{
-  margin-top:10px;
+  font-family:var(--body-font);
   opacity:0.9;
+  margin-top:5px;
 }
 
 /* BOTONES */
 .btn{
-  margin-top:20px;
-  padding:12px 24px;
+  margin-top:15px;
+  padding:12px 22px;
   border:none;
   border-radius:30px;
   background:var(--primary);
@@ -102,9 +94,7 @@ body{
   cursor:pointer;
 }
 
-/* =========================
-   SECCIONES
-   ========================= */
+/* BOX */
 section{
   padding:60px 20px;
   text-align:center;
@@ -117,12 +107,9 @@ section{
   padding:25px;
   border-radius:15px;
   margin-bottom:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* =========================
-   COUNTDOWN PREMIUM
-   ========================= */
+/* COUNTDOWN */
 .countdown{
   display:flex;
   justify-content:center;
@@ -135,19 +122,17 @@ section{
   background:#1c1c1c;
   padding:15px;
   border-radius:12px;
-  min-width:85px;
+  min-width:80px;
 }
 
 .time span{
-  display:block;
-  font-size:1.7rem;
+  font-size:1.6rem;
   color:var(--primary);
   font-weight:bold;
+  display:block;
 }
 
-/* =========================
-   CARRUSEL
-   ========================= */
+/* CARRUSEL */
 .carousel{
   overflow:hidden;
   border-radius:15px;
@@ -164,21 +149,39 @@ section{
   object-fit:cover;
 }
 
-/* =========================
-   ANIMACIONES
-   ========================= */
+/* BOTONES TIPOGRAFÍA */
+.font-tools{
+  position:fixed;
+  top:10px;
+  right:10px;
+  display:flex;
+  gap:5px;
+  z-index:9999;
+}
+
+.font-tools button{
+  padding:6px 10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#222;
+  color:white;
+  font-size:12px;
+}
+
+/* ANIMACIONES */
 @keyframes shine{
   0%{background-position:0%;}
   100%{background-position:200%;}
 }
 
-@keyframes fadeName{
-  to{opacity:1;transform:translateY(0);}
-}
-
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(30px);}
   to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeName{
+  to{opacity:1;}
 }
 
 @keyframes slide{
@@ -188,7 +191,7 @@ section{
   100%{transform:translateX(0);}
 }
 
-/* BOTÓN LINK */
+/* LINKS */
 a.button{
   display:inline-block;
   margin-top:15px;
@@ -204,31 +207,31 @@ a.button{
 
 <body>
 
-<!-- =========================
-   🎬 BACKGROUND (EDITABLE)
-   ========================= -->
-<div class="background">
+<!-- 🔤 SELECTOR TIPOGRAFÍAS -->
+<div class="font-tools">
+  <button onclick="setFont('playfair')">Elegante</button>
+  <button onclick="setFont('greatvibes')">Firma</button>
+  <button onclick="setFont('cinzel')">Royal</button>
+  <button onclick="setFont('montserrat')">Clean</button>
+</div>
 
-  <!-- VIDEO (default) -->
+<!-- 🎬 BACKGROUND -->
+<div class="background">
   <video autoplay muted loop playsinline>
     <source src="fondo.mp4">
   </video>
-
-  <!-- O IMAGEN (opcional)
-  <img src="fondo.jpg">
-  -->
-
   <div class="overlay"></div>
 </div>
 
-<!-- =========================
-   HERO
-   ========================= -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-content">
 
     <h1 id="name" class="luxury-name"></h1>
-    <p id="subtitle" class="subtitle"></p>
+
+    <!-- 👇 LO QUE PEDISTE: orden correcto -->
+    <div class="main-title">Mis 15 años</div>
+    <div class="subtitle" id="subtitle"></div>
 
     <button class="btn" onclick="scrollToInfo()">Ver invitación</button>
     <button class="btn" onclick="toggleMusic()">🎵 Música</button>
@@ -236,15 +239,13 @@ a.button{
     <audio id="music">
       <source src="musica.mp3">
     </audio>
+
   </div>
 </div>
 
-<!-- =========================
-   CONTENIDO
-   ========================= -->
+<!-- CONTENIDO -->
 <section id="info">
 
-<!-- COUNTDOWN -->
 <div class="box">
   <h2>⏳ Cuenta regresiva</h2>
 
@@ -256,22 +257,18 @@ a.button{
   </div>
 </div>
 
-<!-- UBICACIÓN -->
 <div class="box">
   <h2>📍 Ubicación</h2>
   <a class="button" id="map" target="_blank">Ver ubicación</a>
 </div>
 
-<!-- WHATSAPP -->
 <div class="box">
   <h2>💬 Confirmación</h2>
   <a class="button" id="wa" target="_blank">Confirmar asistencia</a>
 </div>
 
-<!-- GALERÍA -->
 <div class="box">
-  <h2>📸 Álbum de Fotos</h2>
-
+  <h2>📸 Galería</h2>
   <div class="carousel">
     <div class="slides">
       <img src="foto1.png">
@@ -285,24 +282,20 @@ a.button{
 
 <script>
 
-/* =========================
-   ⚙️ CONFIG (EDITAR SOLO AQUÍ)
-   ========================= */
+/* ⚙️ CONFIG EDITABLE */
 const CONFIG = {
   name:"Sofía",
-  subtitle:"Mis 15 años - Una noche inolvidable",
+  subtitle:"Una noche inolvidable",
 
   eventDate:"2026-12-20T20:00:00",
 
-  whatsapp:"59895090806",
-  whatsappText:"Hola! Confirmo mi asistencia a los 15 años",
+  whatsapp:"59899999999",
+  whatsappText:"Hola! Confirmo mi asistencia",
 
   mapURL:"https://www.google.com/maps"
 };
 
-/* =========================
-   INYECTAR DATOS
-   ========================= */
+/* INYECTAR */
 document.getElementById("name").innerText = CONFIG.name;
 document.getElementById("subtitle").innerText = CONFIG.subtitle;
 
@@ -311,9 +304,7 @@ document.getElementById("wa").href =
 
 document.getElementById("map").href = CONFIG.mapURL;
 
-/* =========================
-   COUNTDOWN
-   ========================= */
+/* COUNTDOWN */
 const event = new Date(CONFIG.eventDate).getTime();
 
 setInterval(()=>{
@@ -326,17 +317,37 @@ setInterval(()=>{
   document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
 },1000);
 
-/* =========================
-   FUNCIONES
-   ========================= */
-function scrollToInfo(){
-  document.getElementById("info").scrollIntoView({behavior:"smooth"});
-}
-
+/* MÚSICA */
 function toggleMusic(){
   const m=document.getElementById("music");
   m.paused?m.play():m.pause();
 }
+
+/* SCROLL */
+function scrollToInfo(){
+  document.getElementById("info").scrollIntoView({behavior:"smooth"});
+}
+
+/* TIPOGRAFÍAS */
+function setFont(type){
+
+  if(type==="playfair"){
+    document.documentElement.style.setProperty('--title-font', "'Playfair Display', serif");
+  }
+
+  if(type==="greatvibes"){
+    document.documentElement.style.setProperty('--title-font', "'Great Vibes', cursive");
+  }
+
+  if(type==="cinzel"){
+    document.documentElement.style.setProperty('--title-font', "'Cinzel', serif");
+  }
+
+  if(type==="montserrat"){
+    document.documentElement.style.setProperty('--title-font', "'Montserrat', sans-serif");
+  }
+}
+
 </script>
 
 </body>
