@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Invitación - 15 años</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,6 +19,7 @@
  --body-font:'Montserrat', sans-serif;
 }
 
+/* RESET */
 *{
  margin:0;
  padding:0;
@@ -89,20 +90,24 @@ body{
  border-radius:30px;
  background:var(--primary);
  color:#000;
- font-weight:bold;
+ font-weight:600;
  cursor:pointer;
+ transition:0.3s;
 }
 
-/* ================= FLECHAS GUIA ================= */
+.btn:hover{
+ transform:scale(1.03);
+}
+
+/* ================= FLECHA BAJAR ================= */
 .scroll-down{
  position:absolute;
  bottom:20px;
  left:50%;
  transform:translateX(-50%);
  color:var(--primary);
- font-size:28px;
+ font-size:26px;
  animation:bounce 1.5s infinite;
- opacity:0.9;
 }
 
 @keyframes bounce{
@@ -110,14 +115,14 @@ body{
  50%{transform:translate(-50%,10px);}
 }
 
-/* ================= BOXES ================= */
+/* ================= BOXES PREMIUM ================= */
 .box{
  max-width:850px;
  margin:20px auto;
  padding:28px;
  border-radius:20px;
 
- background: rgba(0,0,0,0.28);
+ background: rgba(0,0,0,0.25);
 
  backdrop-filter: blur(14px);
  -webkit-backdrop-filter: blur(14px);
@@ -129,6 +134,10 @@ body{
  text-align:center;
 
  animation: fadeUp 0.8s ease both;
+
+ font-family:var(--body-font);
+ font-weight:300;
+ letter-spacing:0.3px;
 }
 
 .box h2{
@@ -158,10 +167,34 @@ body{
  display:block;
 }
 
+/* ================= BOTONES ================= */
+a.button{
+ display:inline-block;
+ margin-top:10px;
+ padding:12px 18px;
+ background:var(--primary);
+ color:#000;
+ border-radius:30px;
+ text-decoration:none;
+ font-weight:600;
+ transition:0.3s;
+}
+
+a.button:hover{
+ transform:scale(1.03);
+}
+
 /* ================= CARRUSEL ================= */
 .carousel{
- overflow:hidden;
+ overflow-x:auto;
+ scroll-snap-type:x mandatory;
+ display:flex;
  border-radius:15px;
+ -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar{
+ display:none;
 }
 
 .slides{
@@ -173,20 +206,17 @@ body{
  width:100%;
  height:380px;
  object-fit:cover;
+ scroll-snap-align:center;
+ border-radius:12px;
 }
 
 /* ================= FLECHA CARRUSEL ================= */
 .swipe-hint{
  text-align:center;
- color:var(--primary);
  margin-top:8px;
- font-size:14px;
- animation:fadeHint 2s infinite;
-}
-
-@keyframes fadeHint{
- 0%,100%{opacity:0.4;}
- 50%{opacity:1;}
+ color:var(--primary);
+ font-size:24px;
+ animation:bounce 1.5s infinite;
 }
 
 /* ================= ANIMACIÓN ================= */
@@ -235,7 +265,6 @@ body{
    <source src="musica.mp3">
   </audio>
 
-  <!-- 👇 FLECHA BAJAR -->
   <div class="scroll-down">↓</div>
 
  </div>
@@ -254,12 +283,17 @@ body{
  </div>
 </div>
 
-<!-- FECHA -->
+<!-- FECHA Y LUGAR -->
 <div class="box">
  <h2>📅 Fecha y lugar</h2>
+
  <p>18 de Octubre</p>
  <p>Salón Aurora Palace</p>
  <p style="opacity:0.8;">Avenida Las Flores 2020</p>
+
+ <p style="margin-top:10px;">
+  🕘 A las 21:00 horas
+ </p>
 </div>
 
 <!-- UBICACIÓN -->
@@ -274,7 +308,8 @@ body{
 <div class="box">
  <h2>📸 Recuerdos</h2>
 
- <div class="carousel" id="carousel">
+ <div class="carousel">
+
   <div class="slides">
    <img src="foto1.jpg">
    <img src="foto2.jpg">
@@ -287,9 +322,10 @@ body{
    <img src="foto9.jpg">
    <img src="foto10.jpg">
   </div>
+
  </div>
 
- <div class="swipe-hint">← Deslizá para ver más fotos →</div>
+ <div class="swipe-hint">↓</div>
 </div>
 
 <!-- DRESS CODE -->
@@ -307,6 +343,14 @@ body{
  target="_blank">
  Confirmar asistencia
  </a>
+</div>
+
+<!-- MENSAJE FINAL -->
+<div class="box">
+ <div class="elegant-script">
+  Te espero para compartir este momento tan especial…<br>
+  será una noche para recordar siempre ✨
+ </div>
 </div>
 
 </section>
@@ -343,16 +387,6 @@ function toggleMusic(){
 function scrollToInfo(){
  document.getElementById("info").scrollIntoView({behavior:"smooth"});
 }
-
-/* AUTO SCROLL CARRUSEL */
-const carousel = document.getElementById("carousel");
-
-setInterval(()=>{
- carousel.scrollBy({
-  left: carousel.offsetWidth,
-  behavior: "smooth"
- });
-}, 4000);
 
 </script>
 
