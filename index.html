@@ -139,7 +139,7 @@ a.button{
  font-weight:300;
 }
 
-/* ================= COUNTDOWN RESTAURADO ================= */
+/* COUNTDOWN */
 .countdown{
  display:flex;
  justify-content:center;
@@ -161,38 +161,26 @@ a.button{
  font-weight:600;
 }
 
-/* CARRUSEL */
-.carousel{
- overflow-x:auto;
- scroll-snap-type:x mandatory;
- display:flex;
- -webkit-overflow-scrolling: touch;
+/* ================= NETFLIX SLIDER ================= */
+.netflix-slider{
+ position:relative;
+ width:100%;
+ height:380px;
+ overflow:hidden;
  border-radius:15px;
 }
 
-.carousel::-webkit-scrollbar{
- display:none;
-}
-
-.slides{
- display:flex;
-}
-
-.slides img{
- flex:0 0 100%;
+.slide{
+ position:absolute;
  width:100%;
- height:380px;
+ height:100%;
  object-fit:cover;
- scroll-snap-align:center;
+ opacity:0;
+ transition:opacity 1.2s ease;
 }
 
-/* FLECHA CARRUSEL */
-.swipe-hint{
- text-align:center;
- margin-top:8px;
- color:var(--primary);
- font-size:24px;
- animation:bounce 1.5s infinite;
+.slide.active{
+ opacity:1;
 }
 
 </style>
@@ -236,7 +224,7 @@ a.button{
 
 <section id="info">
 
-<!-- COUNTDOWN RESTAURADO -->
+<!-- COUNTDOWN -->
 <div class="box">
  <h2>Faltan...</h2>
 
@@ -264,7 +252,7 @@ a.button{
  <a class="button" href="#">Clickeá aquí</a>
 </div>
 
-<!-- CARRUSEL -->
+<!-- CARRUSEL NETFLIX -->
 <div class="box">
  <h2>📸 Recuerdos</h2>
 
@@ -284,43 +272,6 @@ a.button{
  </div>
 
 </div>
- .netflix-slider{
- position:relative;
- width:100%;
- height:380px;
- overflow:hidden;
- border-radius:15px;
-}
-
-.slide{
- position:absolute;
- width:100%;
- height:100%;
- object-fit:cover;
- opacity:0;
- transition:opacity 1.2s ease;
-}
-
-.slide.active{
- opacity:1;
-}
-let current = 0;
-const slides = document.querySelectorAll(".slide");
-
-function showSlide(i){
- slides.forEach(s => s.classList.remove("active"));
- slides[i].classList.add("active");
-}
-
-function nextSlide(){
- current++;
- if(current >= slides.length) current = 0;
- showSlide(current);
-}
-
-setInterval(nextSlide, 4000);
- <div class="swipe-hint">↓</div>
-</div>
 
 <!-- DRESS CODE -->
 <div class="box">
@@ -328,7 +279,7 @@ setInterval(nextSlide, 4000);
  <p>Semiformal</p>
 </div>
 
-<!-- CONFIRMACIÓN + MENSAJE FINAL UNIFICADO -->
+<!-- CONFIRMACIÓN -->
 <div class="box">
 
  <div class="elegant-script" style="margin-bottom:15px;">
@@ -364,16 +315,33 @@ setInterval(()=>{
  document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
 },1000);
 
-/* SCROLL */
-function scrollToInfo(){
- document.getElementById("info").scrollIntoView({behavior:"smooth"});
-}
-
 /* MUSIC */
 function toggleMusic(){
  const m=document.getElementById("music");
  m.paused ? m.play() : m.pause();
 }
+
+/* SCROLL */
+function scrollToInfo(){
+ document.getElementById("info").scrollIntoView({behavior:"smooth"});
+}
+
+/* NETFLIX SLIDER */
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(i){
+ slides.forEach(s => s.classList.remove("active"));
+ slides[i].classList.add("active");
+}
+
+function nextSlide(){
+ current++;
+ if(current >= slides.length) current = 0;
+ showSlide(current);
+}
+
+setInterval(nextSlide, 4000);
 
 </script>
 
