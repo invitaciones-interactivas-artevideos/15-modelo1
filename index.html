@@ -17,10 +17,9 @@
  --title-font:'Great Vibes', cursive;
  --soft-font:'Playfair Display', serif;
  --body-font:'Montserrat', sans-serif;
-
- --box-bg: rgba(20,20,20,0.55);
 }
 
+/* RESET */
 *{
  margin:0;
  padding:0;
@@ -31,9 +30,10 @@ body{
  font-family:var(--body-font);
  background:var(--bg);
  color:var(--text);
+ overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
+/* ================= BACKGROUND CINEMATOGRÁFICO ================= */
 .background{
  position:fixed;
  inset:0;
@@ -44,7 +44,8 @@ body{
  width:100%;
  height:100%;
  object-fit:cover;
- filter:brightness(0.55);
+ filter:brightness(0.45) contrast(1.1) saturate(1.1);
+ transform:scale(1.05);
 }
 
 .overlay{
@@ -53,7 +54,7 @@ body{
  background:rgba(0,0,0,0.35);
 }
 
-/* ================= HERO ================= */
+/* ================= PORTADA ================= */
 .hero{
  height:100vh;
  display:flex;
@@ -75,10 +76,12 @@ body{
  color:var(--primary);
 }
 
-.subtitle{
+/* ✨ FRASE CURSIVA CORRECTA */
+.elegant-script{
+ font-family:var(--title-font);
+ font-size:1.9rem;
+ line-height:1.4;
  margin-top:10px;
- font-style:italic;
- opacity:0.85;
 }
 
 .btn{
@@ -92,15 +95,32 @@ body{
  cursor:pointer;
 }
 
-/* ================= BOX ================= */
+/* ================= BOXES PREMIUM ================= */
 .box{
  max-width:850px;
  margin:20px auto;
- background:var(--box-bg);
- padding:25px;
- border-radius:18px;
- backdrop-filter: blur(6px);
+ padding:28px;
+ border-radius:20px;
+
+ background: rgba(0,0,0,0.38);
+
+ backdrop-filter: blur(14px);
+ -webkit-backdrop-filter: blur(14px);
+
+ border: 1px solid rgba(255,255,255,0.08);
+
+ box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
  text-align:center;
+
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+ animation: fadeUp 0.8s ease both;
+}
+
+.box:hover{
+ transform: translateY(-3px);
+ box-shadow: 0 15px 40px rgba(0,0,0,0.45);
 }
 
 .box h2{
@@ -150,7 +170,7 @@ a.button{
 
 .slides{
  display:flex;
- animation:slide 20s infinite linear;
+ animation:slide 20s linear infinite;
 }
 
 .slides img{
@@ -164,11 +184,16 @@ a.button{
  100%{transform:translateX(-900%);}
 }
 
-/* ================= MENSAJE FINAL ================= */
-.final-message{
- font-family:var(--title-font);
- font-size:1.8rem;
- margin:40px 0;
+/* ================= ANIMACIÓN ================= */
+@keyframes fadeUp{
+ from{
+  opacity:0;
+  transform:translateY(25px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
 }
 
 </style>
@@ -186,13 +211,17 @@ a.button{
 
 <!-- PORTADA -->
 <div class="hero">
+
  <div>
 
   <h1 id="name" class="luxury-name"></h1>
+
   <div class="main-title">Mis 15 años</div>
 
-  <div class="subtitle">
-   Se acerca la noche tan soñada… y deseo compartirla contigo ✨
+  <!-- ✨ FRASE CURSIVA CORRECTA -->
+  <div class="elegant-script">
+   Se acerca la noche tan soñada…<br>
+   y deseo compartirla contigo ✨
   </div>
 
   <button class="btn" onclick="scrollToInfo()">Ver invitación</button>
@@ -221,29 +250,20 @@ a.button{
 <!-- 2. FECHA + LUGAR -->
 <div class="box">
  <h2>📅 Fecha y lugar</h2>
-
- <p>
-  18 de Octubre <!-- 👈 AQUI EDITAS FECHA (SIN AÑO) -->
- </p>
-
- <p style="margin-top:8px;">
-  Salón Aurora Palace <!-- 👈 AQUI EDITAS NOMBRE LUGAR -->
- </p>
-
- <p style="opacity:0.8;">
-  Avenida Las Flores 2020
- </p>
+ <p>18 de Octubre</p>
+ <p style="margin-top:8px;">Salón Aurora Palace</p>
+ <p style="opacity:0.8;">Avenida Las Flores 2020</p>
 </div>
 
 <!-- 3. UBICACIÓN -->
 <div class="box">
- <h2>📍 Ubicación</h2>
+ <h2>📍 ¿Cómo llegar?</h2>
  <a class="button" href="https://www.google.com/maps" target="_blank">
   Clickeá aquí para saber cómo llegar
  </a>
 </div>
 
-<!-- 4. CARRUSEL 10 FOTOS -->
+<!-- 4. FOTOS -->
 <div class="box">
  <h2>📸 Recuerdos</h2>
 
@@ -284,7 +304,7 @@ a.button{
 
 <!-- 7. MENSAJE FINAL -->
 <div class="box">
- <div class="final-message">
+ <div class="elegant-script">
   Te espero para compartir este momento tan especial…<br>
   será una noche para recordar siempre ✨
  </div>
