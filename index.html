@@ -83,6 +83,7 @@ body{
 }
 
 /* BOTONES */
+/* BOTONES */
 .btn{
  margin-top:18px;
  padding:12px 20px;
@@ -92,6 +93,8 @@ body{
  color:#000;
  font-weight:600;
  cursor:pointer;
+ font-family: var(--body-font);
+ transition: all 0.3s ease;
 }
 
 a.button{
@@ -112,11 +115,17 @@ a.button{
  cursor:pointer;
 
  transition: all 0.3s ease;
- .btn:hover,
+}
+
+/* HOVER (AMBOS BOTONES) */
+.btn:hover,
 a.button:hover{
  transform: translateY(-2px);
- filter: brightness(1.1)
- .btn,
+ filter: brightness(1.1);
+}
+
+/* SOMBRA (AMBOS BOTONES) */
+.btn,
 a.button{
  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
