@@ -3,19 +3,29 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Invitación Sofía - 15 años</title>
+<title>Invitación - 15 años</title>
 
-<!-- 💎 TIPOGRAFÍAS -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<!-- 💎 FUENTES (5 opciones fáciles de usar) -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;500&family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Alex+Brush&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
+
+ /* 🎨 COLORES PRINCIPALES (AQUI CAMBIAS TODO EL ESTILO) */
  --primary:#ff6f91;
-  --bg:#000;
-  --text:#fff;
-  --title-font:'Dancing Script', cursive;
-  --body-font:'Montserrat', sans-serif;
+
+ /* 🔳 FONDO GENERAL */
+ --bg:#000;
+ --text:#fff;
+
+ /* 💎 FUENTES (SOLO CAMBIAS EL NOMBRE) */
+ --title-font:'Dancing Script', cursive;
+ --body-font:'Montserrat', sans-serif;
+
+ /* 🧊 CAJAS (BOXES) */
+ --box-bg: rgba(20,20,20,0.75); /* 👈 OPACIDAD DE LOS CUADROS */
+ --box-radius:15px;
 }
 
 *{
@@ -28,7 +38,6 @@ body{
   font-family:var(--body-font);
   background:var(--bg);
   color:var(--text);
-  overflow-x:hidden;
 }
 
 /* ================= BACKGROUND ================= */
@@ -38,8 +47,7 @@ body{
   z-index:-1;
 }
 
-.background video,
-.background img{
+.background video{
   width:100%;
   height:100%;
   object-fit:cover;
@@ -49,7 +57,7 @@ body{
 .overlay{
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.35);
 }
 
 /* ================= HERO ================= */
@@ -61,31 +69,19 @@ body{
   text-align:center;
 }
 
-.hero-content{
-  animation:fadeUp 1.5s ease;
-}
-
-/* 💎 NOMBRE */
 .luxury-name{
   font-family:var(--title-font);
   font-size:5rem;
-  color:#fff;
-  text-shadow:0 0 20px rgba(212,175,55,0.4);
 }
 
-/* 💎 MIS 15 AÑOS */
 .main-title{
   font-family:var(--title-font);
-  font-size:3rem;
-  margin-top:10px;
+  font-size:2.8rem;
   color:var(--primary);
 }
 
-/* SUBTÍTULO */
 .subtitle{
-  font-family:var(--body-font);
-  margin-top:8px;
-  opacity:0.9;
+  opacity:0.85;
 }
 
 /* BOTONES */
@@ -95,24 +91,28 @@ body{
   border:none;
   border-radius:30px;
   background:var(--primary);
-  color:#001;
-  font-weight:bold;
+  color:#000;
   cursor:pointer;
 }
 
-/* SECCIONES */
-section{
-  padding:60px 20px;
-  text-align:center;
-}
-
+/* ================= BOXES ================= */
 .box{
   max-width:850px;
-  margin:auto;
-  background:#141414;
+  margin:20px auto;
+  background:var(--box-bg); /* 👈 CAMBIO DE COLOR Y TRANSPARENCIA */
   padding:25px;
-  border-radius:15px;
-  margin-bottom:25px;
+  border-radius:var(--box-radius);
+}
+
+/* 🔥 TITULOS DENTRO DE BOX (TAMAÑO EDITABLE) */
+.box h2{
+  font-size:22px; /* 👈 AQUI CAMBIAS TAMAÑO TITULOS */
+  margin-bottom:12px;
+}
+
+/* TEXTOS GENERALES */
+.box p{
+  font-size:16px; /* 👈 AQUI CAMBIAS TEXTO NORMAL */
 }
 
 /* COUNTDOWN */
@@ -120,7 +120,6 @@ section{
   display:flex;
   justify-content:center;
   gap:12px;
-  flex-wrap:wrap;
 }
 
 .time{
@@ -131,52 +130,26 @@ section{
 }
 
 .time span{
-  font-size:1.6rem;
+  font-size:1.5rem;
   color:var(--primary);
   display:block;
-  font-weight:bold;
 }
 
-/* CARRUSEL */
-.carousel{
-  overflow:hidden;
-  border-radius:15px;
-}
-
-.slides{
-  display:flex;
-  animation:slide 12s infinite;
-}
-
-.slides img{
-  width:100%;
-  height:380px;
-  object-fit:cover;
-}
-
-/* BOTÓN LINK */
+/* BOTON LINKS */
 a.button{
   display:inline-block;
-  margin-top:15px;
-  padding:12px 20px;
+  margin-top:10px;
+  padding:12px 18px;
   background:var(--primary);
   color:#000;
   border-radius:30px;
   text-decoration:none;
-  font-weight:bold;
 }
 
-/* ANIMACIONES */
+/* ANIMACION */
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px);}
+  from{opacity:0;transform:translateY(20px);}
   to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes slide{
-  0%{transform:translateX(0);}
-  33%{transform:translateX(-100%);}
-  66%{transform:translateX(-200%);}
-  100%{transform:translateX(0);}
 }
 
 </style>
@@ -194,19 +167,20 @@ a.button{
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-content">
+  <div>
 
+    <!-- 👇 NOMBRE -->
     <h1 id="name" class="luxury-name"></h1>
 
     <div class="main-title">Mis 15 años</div>
-    <div class="subtitle">Una noche inolvidable</div>
+
+    <!-- 💬 FRASE EDITABLE (NUEVA) -->
+    <p class="subtitle">
+      Se acerca la noche tan soñada… y deseo compartirla contigo ✨
+      <!-- 👈 AQUI PUEDES CAMBIAR EL TEXTO -->
+    </p>
 
     <button class="btn" onclick="scrollToInfo()">Ver invitación</button>
-    <button class="btn" onclick="toggleMusic()">🎵 Música</button>
-
-    <audio id="music">
-      <source src="musica.mp3">
-    </audio>
 
   </div>
 </div>
@@ -214,53 +188,74 @@ a.button{
 <!-- CONTENIDO -->
 <section id="info">
 
+<!-- 📅 FECHA Y HORA -->
+<div class="box">
+  <h2>📅 Fecha y hora</h2>
+
+  <p>
+    20 de Diciembre de 2026 - 20:00 hs
+    <!-- 👈 AQUI CAMBIAS FECHA Y HORA MANUALMENTE -->
+  </p>
+</div>
+
+<!-- ⏳ COUNTDOWN -->
 <div class="box">
   <h2>⏳ Faltan...</h2>
   <div class="countdown">
     <div class="time"><span id="d"></span>Días</div>
-    <div class="time"><span id="h"></span>Horas</div>
+    <div class="time"><span id="h"></span>Hs</div>
     <div class="time"><span id="m"></span>Min</div>
     <div class="time"><span id="s"></span>Seg</div>
   </div>
 </div>
 
+<!-- 📍 UBICACIÓN -->
 <div class="box">
-  <h2>📌¿Cómo llegar?</h2>
-  <a class="button" href="https://www.google.com/maps" target="_blank">Ver ubicación</a>
-</div>
-
-<div class="box">
-  <h2>💬 ¡Tu presencia es muy importante!</h2>
-  <a class="button"
-     href="https://wa.me/59895090806?text=Hola! Confirmo mi asistencia"
-     target="_blank">
-     Confirma tu asistencia
+  <h2>📍 ¿Cómo llegar?</h2>
+  <a class="button" href="https://www.google.com/maps" target="_blank">
+    Ver ubicación
   </a>
 </div>
 
+<!-- 👗 DRESS CODE -->
 <div class="box">
-  <h2>📸 Mi álbum de recuerdos</h2>
-  <div class="carousel">
-    <div class="slides">
-      <img src="foto1.png">
-      <img src="foto2.jpg">
-      <img src="principal.jpg">
-      <img src="10añosnena2.jpg">
-    </div>
-  </div>
+  <h2>👗 Dress Code</h2>
+  <p>
+    Elegante / Formal
+    <!-- 👈 AQUI CAMBIAS VESTIMENTA -->
+  </p>
+</div>
+
+<!-- 💬 FRASE EMOTIVA -->
+<div class="box">
+  <h2>💬 Mensaje especial</h2>
+  <p>
+    La noche que soñé toda mi vida finalmente llegó… quiero compartirla con las personas que más quiero.
+    <!-- 👈 EDITABLE -->
+  </p>
+</div>
+
+<!-- 🎉 CONFIRMACION -->
+<div class="box">
+  <h2>🎉 Confirmar asistencia</h2>
+  <a class="button"
+     href="https://wa.me/59895090806?text=Hola! Confirmo mi asistencia"
+     target="_blank">
+     Confirmar
+  </a>
 </div>
 
 </section>
 
 <script>
 
-/* ⚙️ CONFIG */
+/* ⚙️ CONFIG PRINCIPAL */
 const CONFIG = {
   name:"Sofía",
   eventDate:"2026-12-20T20:00:00"
 };
 
-/* INYECTAR */
+/* NOMBRE */
 document.getElementById("name").innerText = CONFIG.name;
 
 /* COUNTDOWN */
@@ -276,13 +271,6 @@ setInterval(()=>{
   document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
 },1000);
 
-/* MÚSICA */
-function toggleMusic(){
-  const m=document.getElementById("music");
-  m.paused ? m.play() : m.pause();
-}
-
-/* SCROLL */
 function scrollToInfo(){
   document.getElementById("info").scrollIntoView({behavior:"smooth"});
 }
